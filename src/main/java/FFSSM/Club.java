@@ -16,6 +16,11 @@ public class Club {
     public String adresse;
 
     public String telephone;
+    
+    private HashSet<Plongee> plongeesNonConformes = new HashSet<>();
+    private HashSet<Plongee> plongeesConformes = new HashSet<>();
+
+
 
     public Club(Moniteur président, String nom, String telephone) {
         this.president = président;
@@ -24,51 +29,21 @@ public class Club {
     }
 
     public Set<Plongee> plongeesNonConformes() {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        return plongeesNonConformes;
     }
 
-    public void organisePlongee(Plongee p) {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
-    }
+    public void organisePlongee(Plongee plongee) {
+        if (plongee.estConforme()) {
+            plongeesConformes.add(plongee);
+        } else {
+            plongeesNonConformes.add(plongee);
+        }
+        }
     
-    
-    public Moniteur getPresident() {
-        return president;
-    }
-
-    public void setPresident(Moniteur président) {
-        this.president = président;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
     @Override
     public String toString() {
         return "Club{" + "président=" + president + ", nom=" + nom + ", adresse=" + adresse + ", telephone=" + telephone + '}';
     }
+    
 
 }

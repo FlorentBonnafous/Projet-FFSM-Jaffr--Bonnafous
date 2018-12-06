@@ -25,34 +25,33 @@ public class Licence {
         this.club = club;
     }
 
-    public Personne getPossesseur() {
-        return possesseur;
-    }
 
-    public String getNumero() {
-        return numero;
-    }
-
-    public Calendar getDelivrance() {
-        return delivrance;
-    }
-
-    public int getNiveau() {
-        return niveau;
-    }
-
-    public Club getClub() {
-        return club;
-    }
 
     /**
      * Est-ce que la licence est valide à la date indiquée ?
+     *
      * @param d la date à tester
      * @return vrai si valide à la date d
-     **/
-    public boolean estValide(Calendar d) {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+     *
+     */
+    public boolean estValide(Calendar c) {
+        // if(d.toString()==delivrance.toString()){
+        //     return true;
+        // }
+        //else{
+        //    return false;
+        // }
+        Calendar fin = (Calendar) delivrance.clone();
+        fin.add(Calendar.YEAR, 1);
+        if ((c.after(delivrance) == true) && (c.before(fin))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void setClub(Club c) {
+        this.club = c;
     }
 
 }
